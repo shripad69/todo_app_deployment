@@ -2,6 +2,7 @@ import axios from "axios";
 import InputBoxComponent from "../components/InputBoxComponent";
 import TodoComponent from "../components/TodoComponent";
 import { useEffect, useState } from "react";
+import { BASEURL } from "../../config";
 
 export default function Home() {
     const [title, setTitle] = useState("");
@@ -12,7 +13,7 @@ export default function Home() {
     useEffect(() => {
         async function getData() {
             const tok = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:8080/get-todos", {
+            const response = await axios.get(`${BASEURL}/get-todos`, {
                 headers: {
                     token: tok
                 }
