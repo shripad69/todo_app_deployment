@@ -1,0 +1,40 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    # CI check on GitHub runner
+    - name: Backend CI check
+      run: |
+        cd backend
+        npm install
+
+    # Deployment on YOUR VM
+    - name: Deploy backend to VM
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd /home/azureuser/todo_app_deployment
+          git pull origin main
+
+          cd backend
+          npm install
+          pm2 restart backend_process || pm2 start index.js --name backend
