@@ -21,8 +21,9 @@ jobs:
     # CI check on GitHub runner
     - name: Backend CI check
       run: |
-        cd backend
+        cd todo_app_deployment/backend
         npm install
+        node index.js
 
 
     # Deployment on YOUR VM
