@@ -10,7 +10,7 @@ const port = 8080;
 
 app.use(cors());
 
-app.use(express.json());bibgyugygy
+app.use(express.json());
 
 app.post("/signup", async (req, res) => {
   const username = req.body.username;
@@ -146,7 +146,7 @@ app.delete("/delete-todo", auth, async(req, res) => {
 app.get("/cicd-check", (req, res) => {
   res.json({
     status: "OK",
-    message: "CI/CD DEPLOYMENT SUCCESS",
+    message: "CI/CD DEPLOYMENT SUCCESS by dj",
     version: "v1",
     time: new Date().toISOString()
   });
