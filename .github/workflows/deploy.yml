@@ -21,7 +21,7 @@ jobs:
     # CI check on GitHub runner
     - name: Backend CI check
       run: |
-        cd todo_app_deployment/backend
+        cd /home/azureuser/todo_app_deployment
         npm install
         node index.js
 
