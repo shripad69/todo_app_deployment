@@ -24,6 +24,7 @@ jobs:
         cd backend
         npm install
 
+
     # Deployment on YOUR VM
     - name: Deploy backend to VM
       uses: appleboy/ssh-action@v1.0.0
