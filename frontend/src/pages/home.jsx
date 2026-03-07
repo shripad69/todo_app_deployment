@@ -23,8 +23,8 @@ export default function Home() {
                 });
                 console.log(response.data.data);
                 setTodos(response.data.data);
-            } catch {
-                console.error("Failed to fetch todos");
+            } catch (error) {
+                console.error("Failed to fetch todos:", error);
             }
         }
         getData();
