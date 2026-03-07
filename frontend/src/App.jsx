@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 function App() {
 
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(() => !!localStorage.getItem('token'))
 
   useEffect(() => {
     const token = localStorage.getItem('token')
